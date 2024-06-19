@@ -19,15 +19,13 @@ yt = YouTube(link)
 yd = yt.streams.get_highest_resolution()
 
 layout3 = [
-    [sg.Text("Title:", font=("Britannic Bold","12", "bold")), sg.Text(yt.title)],
-    [sg.Text("Channel:", font=("Britannic Bold","12", "bold")), sg.Text(yt.author)],
-    [sg.Text("Choose a folder:", font=("Britannic Bold","12", "bold"))],
+    [sg.Text("Title:", font=("Britannic Bold","12", "underline")), sg.Text(yt.title)],
+    [sg.Text("Channel:", font=("Britannic Bold","12", "underline")), sg.Text(yt.author)],
+    [sg.Text("Choose a folder:", font=("Britannic Bold","12", "underline"))],
     [sg.Input(enable_events=True, expand_x=True, key='path'), sg.FolderBrowse()],
-    [sg.Button("Done")]
 ]
 window3 = sg.Window("YouTube Downloader: Choose Folder", layout3, margins=(50,50), font=font)
 event3, values3 = window3.read()
-if event3 == "Done":
-    yd.download(values3['path'])
+yd.download(values3['path'])
 
 window3.close()
